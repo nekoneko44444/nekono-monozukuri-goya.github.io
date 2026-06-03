@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ねこのモノづくり小屋｜お山 × ねこ × グッズ</title>
+  <meta name="description" content="ねこのモノづくり小屋は、木製小物やイベントグッズ、山小屋・地域活動に寄り添う小さなグッズを制作しています。" />
+
+  <!--
+    画像配置メモ
+    /assets/logo.png              ロゴ画像
+    /assets/hero-cat.png          黒猫シルエット
+    /assets/atelier-01.jpg        作業台・道具・制作風景
+    /assets/work-01.jpg〜06.jpg   代表作品写真
+    /assets/making-01.jpg         制作途中写真
+    /assets/mountain-01.jpg       奥槍戸・山・自然の写真
+    /assets/instagram-qr.png      Instagram QRコード
+  -->
+
+  <style>
+    :root {
+      --cream: #fff6e8;
+      --milk: #fffaf1;
+      --peach: #f8d8c8;
+      --orange: #ec8e1f;
+      --deep-orange: #c85235;
+      --brown: #8b4a35;
+      --dark-brown: #432417;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(139, 74, 53, 0.18);
+      --radius-lg: 34px;
+      --radius-md: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "YuGothic", system-ui, sans-serif;
+      color: var(--brown);
+      background: var(--cream);
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 246, 232, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(200, 82, 53, 0.12);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: var(--deep-orange);
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--deep-orange);
+      box-shadow: 0 10px 22px rgba(200, 82, 53, 0.24);
+    }
+
+    .brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav a:hover {
+      color: var(--deep-orange);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 76px);
+      display: grid;
+      align-items: center;
+      color: var(--white);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255, 188, 56, 0.7), transparent 28%),
+        radial-gradient(circle at 74% 74%, rgba(255, 161, 25, 0.78), transparent 34%),
+        linear-gradient(135deg, #ef9324 0%, #d17a50 58%, #bd6946 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.25;
+      background-image:
+        linear-gradient(90deg, transparent 0 92%, rgba(255,255,255,0.45) 92% 93%, transparent 93% 100%),
+        linear-gradient(0deg, transparent 0 92%, rgba(255,255,255,0.45) 92% 93%, transparent 93% 100%);
+      background-size: 220px 220px;
+      mask-image: radial-gradient(circle at 50% 50%, black, transparent 78%);
+    }
+
+    .star-field {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.85) 0 2px, transparent 3px),
+        radial-gradient(circle, rgba(255,255,255,0.65) 0 3px, transparent 4px),
+        radial-gradient(circle, rgba(255,255,255,0.45) 0 1px, transparent 2px);
+      background-position: 10% 18%, 78% 30%, 42% 76%;
+      background-size: 190px 160px, 270px 210px, 110px 140px;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+      padding: 80px 0;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: 1.12;
+      letter-spacing: 0.07em;
+      margin-bottom: 24px;
+      text-shadow: 0 10px 28px rgba(67,36,23,0.18);
+    }
+
+    .hero-lead {
+      max-width: 620px;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      min-height: 54px;
+      padding: 0 25px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--deep-orange);
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(67,36,23,0.18);
+    }
+
+    .button-outline {
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.85);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 460px;
+    }
+
+    .diamond {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      left: 50%;
+      top: 23%;
+      transform: translateX(-50%) rotate(45deg);
+      border: 8px solid rgba(255,255,255,0.9);
+      border-radius: 22px;
+    }
+
+    .cat-stand {
+      position: absolute;
+      left: 22%;
+      bottom: 40px;
+      width: 108px;
+      height: 245px;
+      background: #070707;
+      border-radius: 54px 54px 42px 42px;
+      transform: rotate(7deg);
+      filter: drop-shadow(0 16px 22px rgba(67,36,23,0.25));
+    }
+
+    .cat-stand::before {
+      content: "";
+      position: absolute;
+      top: -34px;
+      left: 20px;
+      width: 72px;
+      height: 60px;
+      background: #070707;
+      border-radius: 52% 48% 44% 56%;
+      clip-path: polygon(0 30%, 16% 0, 40% 20%, 68% 8%, 100% 30%, 90% 100%, 12% 100%);
+    }
+
+    .cat-stand::after {
+      content: "";
+      position: absolute;
+      left: -54px;
+      bottom: 8px;
+      width: 90px;
+      height: 154px;
+      border-left: 15px solid #070707;
+      border-bottom: 15px solid #070707;
+      border-radius: 0 0 0 90px;
+      transform: rotate(10deg);
+    }
+
+    .cat-arm {
+      position: absolute;
+      left: 76px;
+      top: 12px;
+      width: 18px;
+      height: 142px;
+      background: #070707;
+      border-radius: 999px;
+      transform: rotate(-14deg);
+      transform-origin: top;
+    }
+
+    .floating-card {
+      position: absolute;
+      right: 4%;
+      bottom: 74px;
+      width: min(320px, 76%);
+      padding: 24px;
+      color: var(--deep-orange);
+      background: rgba(255,250,241,0.9);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      transform: rotate(-3deg);
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+    }
+
+    .section {
+      position: relative;
+      padding: 100px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 46px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--deep-orange);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+    }
+
+    .section-title {
+      color: var(--brown);
+      font-size: clamp(28px, 4.4vw, 48px);
+      line-height: 1.34;
+      letter-spacing: 0.08em;
+    }
+
+    .section-desc {
+      max-width: 720px;
+      margin: 16px auto 0;
+      color: rgba(139,74,53,0.86);
+    }
+
+    .atelier {
+      background: linear-gradient(180deg, var(--cream), #fff0df);
+    }
+
+    .atelier-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .photo-frame {
+      position: relative;
+      min-height: 390px;
+      border-radius: 44px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(236,142,31,0.28), rgba(248,216,200,0.8)), url("assets/atelier-01.jpg") center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-frame::after {
+      content: "作業台の写真を入れてください";
+      position: absolute;
+      inset: auto 24px 24px;
+      padding: 12px 16px;
+      color: var(--deep-orange);
+      background: rgba(255,250,241,0.88);
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .atelier-text {
+      padding: 36px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .shelf {
+      background: var(--milk);
+    }
+
+    .shelf-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .shelf-item {
+      position: relative;
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      border-radius: 28px 28px 18px 18px;
+      background: linear-gradient(180deg, #fff, #fff1df);
+      box-shadow: var(--shadow);
+      border-bottom: 12px solid rgba(139,74,53,0.2);
+      transform: rotate(var(--rotate));
+    }
+
+    .shelf-item span {
+      display: block;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .shelf-item strong {
+      color: var(--deep-orange);
+      font-size: 16px;
+      letter-spacing: 0.06em;
+    }
+
+    .works {
+      background: #fff0df;
+      overflow: hidden;
+    }
+
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .polaroid {
+      padding: 14px 14px 28px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 16px 32px rgba(67,36,23,0.16);
+      transform: rotate(var(--tilt));
+      transition: transform 0.2s ease;
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) translateY(-4px);
+    }
+
+    .work-photo {
+      aspect-ratio: 4 / 3;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: rgba(200,82,53,0.75);
+      background: linear-gradient(135deg, rgba(236,142,31,0.2), rgba(248,216,200,0.75));
+      font-size: 48px;
+    }
+
+    .work-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .polaroid h3 {
+      margin-top: 16px;
+      color: var(--brown);
+      font-size: 19px;
+      letter-spacing: 0.04em;
+    }
+
+    .polaroid p {
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: var(--deep-orange);
+      background: #fff0df;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .process {
+      background: var(--cream);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      position: relative;
+      padding: 28px 18px;
+      min-height: 180px;
+      text-align: center;
+      border-radius: 26px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .step:not(:last-child)::after {
+      content: "🐾";
+      position: absolute;
+      right: -22px;
+      top: 50%;
+      transform: translateY(-50%) rotate(18deg);
+      font-size: 24px;
+      z-index: 3;
+    }
+
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--deep-orange);
+      font-weight: 900;
+    }
+
+    .step h3 {
+      color: var(--deep-orange);
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .awa {
+      position: relative;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(67,36,23,0.7), rgba(67,36,23,0.78)),
+        url("assets/mountain-01.jpg") center/cover,
+        var(--brown);
+      overflow: hidden;
+    }
+
+    .awa::before {
+      content: "";
+      position: absolute;
+      left: -5%;
+      right: -5%;
+      bottom: -1px;
+      height: 180px;
+      background: var(--cream);
+      clip-path: polygon(0 80%, 10% 64%, 20% 76%, 34% 50%, 48% 75%, 62% 46%, 78% 72%, 90% 54%, 100% 78%, 100% 100%, 0 100%);
+    }
+
+    .awa .section-title,
+    .awa .section-label,
+    .awa .section-desc {
+      color: var(--white);
+    }
+
+    .awa-box {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 38px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .instagram {
+      background: var(--cream);
+    }
+
+    .insta-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .insta-card,
+    .qr-card {
+      padding: 30px;
+      border-radius: 34px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .qr-placeholder {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      color: var(--deep-orange);
+      background: repeating-linear-gradient(45deg, #fff0df 0 8px, #fffaf1 8px 16px);
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .contact {
+      background: linear-gradient(180deg, #fff0df, var(--cream));
+      text-align: center;
+    }
+
+    .contact-box {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 46px 28px;
+      border-radius: 42px;
+      color: var(--brown);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      color: var(--deep-orange);
+      font-size: clamp(28px, 4vw, 44px);
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .contact .button-primary {
+      color: var(--white);
+      background: var(--deep-orange);
+    }
+
+    .contact .button-outline {
+      color: var(--deep-orange);
+      border-color: var(--deep-orange);
+    }
+
+    .site-footer {
+      padding: 34px 0;
+      color: rgba(139,74,53,0.72);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 940px) {
+      .nav { display: none; }
+      .hero-inner,
+      .atelier-grid,
+      .insta-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 360px; }
+      .shelf-grid { grid-template-columns: repeat(2, 1fr); }
+      .polaroid-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .step:not(:last-child)::after {
+        right: 50%;
+        top: auto;
+        bottom: -24px;
+        transform: translateX(50%) rotate(92deg);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .section { padding: 76px 0; }
+      .shelf-grid { grid-template-columns: 1fr; }
+      .floating-card { right: 0; }
+      .cat-stand { left: 10%; transform: scale(0.78) rotate(7deg); transform-origin: bottom left; }
+      .diamond { width: 180px; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="ねこのモノづくり小屋 トップへ">
+        <!-- ロゴ画像がある場合は下記に差し替え：<img src="assets/logo.png" alt="ねこのモノづくり小屋" /> -->
+        <span class="brand-mark">🐾</span>
+        <span>ねこのモノづくり小屋</span>
+      </a>
+      <nav class="nav" aria-label="メインメニュー">
+        <a href="#atelier">小屋の中</a>
+        <a href="#works">作ったもの</a>
+        <a href="#process">できあがるまで</a>
+        <a href="#awa">阿波山雅</a>
+        <a href="#contact">相談する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="メインビジュアル">
+      <div class="star-field"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="kicker">お山 × ねこ × グッズ</p>
+          <h1>小屋をのぞくと、<br />たのしいモノが<br />できている。</h1>
+          <p class="hero-lead">
+            木製小物、イベントグッズ、山小屋に似合う小さな道具。ねこのモノづくり小屋は「こんなのがあったらいいな」を、少しずつ形にする制作室です。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#works">作ったものを見る</a>
+            <a class="button button-outline" href="#atelier">小屋をのぞいてみる</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <!-- 黒猫画像がある場合は、この装飾を <img src="assets/hero-cat.png" alt="" /> に差し替え可能です -->
+          <div class="diamond"></div>
+          <div class="cat-stand"><span class="cat-arm"></span></div>
+          <div class="floating-card">
+            <strong>NEKONO<br />MONOZUKURI<br />GOYA</strong>
+            <p>ちいさな工房案内</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="atelier" class="section atelier">
+      <div class="container atelier-grid">
+        <div class="photo-frame" role="img" aria-label="作業台や道具の写真を入れる場所"></div>
+        <div class="atelier-text">
+          <span class="section-label">ATELIER</span>
+          <h2 class="section-title">小屋の中では、<br />今日も何かを制作中。</h2>
+          <p>
+            ねこのモノづくり小屋では、大量生産ではなく、使う場所や目的に合わせた小さなモノづくりを大切にしています。
+          </p>
+          <p>
+            山小屋で使うもの、イベントで配るもの、ちょっとした記念になるもの。完成形が決まっていない段階でも、用途から一緒に考えます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shelf">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">MENU</span>
+          <h2 class="section-title">棚に並ぶ、できること</h2>
+          <p class="section-desc">まずはこの5つを中心に見せると、何を作っている小屋なのかが伝わりやすくなります。</p>
+        </div>
+
+        <div class="shelf-grid">
+          <div class="shelf-item" style="--rotate:-2deg"><div><span>⛰️</span><strong>山小屋グッズ</strong></div></div>
+          <div class="shelf-item" style="--rotate:1.5deg"><div><span>🎪</span><strong>イベントグッズ</strong></div></div>
+          <div class="shelf-item" style="--rotate:-1deg"><div><span>🐈</span><strong>ねこモチーフ</strong></div></div>
+          <div class="shelf-item" style="--rotate:2deg"><div><span>🪧</span><strong>木製プレート</strong></div></div>
+          <div class="shelf-item" style="--rotate:-1.5deg"><div><span>🛠️</span><strong>試作品づくり</strong></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="works" class="section works">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">WORKS</span>
+          <h2 class="section-title">作ったものたち</h2>
+          <p class="section-desc">画像は /assets/work-01.jpg 〜 /assets/work-06.jpg に配置すると、そのまま表示できます。</p>
+        </div>
+
+        <div class="polaroid-grid">
+          <article class="polaroid" style="--tilt:-2deg">
+            <div class="work-photo"><img src="assets/work-01.jpg" alt="カップラーメンふたホルダー" onerror="this.remove(); this.parentElement.textContent='🍜';" /></div>
+            <h3>カップラーメンふたホルダー</h3>
+            <p>屋外でカップラーメンを楽しむための、キーホルダーにもなる小さな便利グッズ。</p>
+            <div class="tags"><span class="tag">イベント</span><span class="tag">山小屋</span><span class="tag">小ロット</span></div>
+          </article>
+
+          <article class="polaroid" style="--tilt:1.5deg">
+            <div class="work-photo"><img src="assets/work-02.jpg" alt="ねこモチーフ小物" onerror="this.remove(); this.parentElement.textContent='🐾';" /></div>
+            <h3>ねこモチーフ小物</h3>
+            <p>ねこの雰囲気を活かした、手に取りやすい小物や記念グッズ。</p>
+            <div class="tags"><span class="tag">ねこ</span><span class="tag">雑貨</span></div>
+          </article>
+
+          <article class="polaroid" style="--tilt:-1deg">
+            <div class="work-photo"><img src="assets/work-03.jpg" alt="木製プレート・POP" onerror="this.remove(); this.parentElement.textContent='🪧';" /></div>
+            <h3>木製プレート・POP</h3>
+            <p>店舗やイベントで使える、やさしい雰囲気の表示物やプレート。</p>
+            <div class="tags"><span class="tag">木工</span><span class="tag">表示物</span></div>
+          </article>
+
+          <article class="polaroid" style="--tilt:2deg">
+            <div class="work-photo"><img src="assets/work-04.jpg" alt="山小屋オリジナルグッズ" onerror="this.remove(); this.parentElement.textContent='⛰️';" /></div>
+            <h3>山小屋オリジナルグッズ</h3>
+            <p>山を訪れた記念になるような、手に取りやすい小物。</p>
+            <div class="tags"><span class="tag">山</span><span class="tag">記念品</span></div>
+          </article>
+
+          <article class="polaroid" style="--tilt:-1.5deg">
+            <div class="work-photo"><img src="assets/work-05.jpg" alt="試作品" onerror="this.remove(); this.parentElement.textContent='🛠️';" /></div>
+            <h3>試作品</h3>
+            <p>思いついたアイデアを、まずは小さく形にして試します。</p>
+            <div class="tags"><span class="tag">試作</span><span class="tag">相談可</span></div>
+          </article>
+
+          <article class="polaroid" style="--tilt:1deg">
+            <div class="work-photo"><img src="assets/work-06.jpg" alt="イベント記念品" onerror="this.remove(); this.parentElement.textContent='🎪';" /></div>
+            <h3>イベント記念品</h3>
+            <p>イベントを少し楽しく、思い出に残るものにする小さなグッズ。</p>
+            <div class="tags"><span class="tag">イベント</span><span class="tag">記念品</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section process">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">PROCESS</span>
+          <h2 class="section-title">できあがるまで</h2>
+          <p class="section-desc">猫の足跡をたどるように、相談からお渡しまでの流れをシンプルに見せます。</p>
+        </div>
+
+        <div class="steps">
+          <div class="step"><span class="step-number">1</span><h3>相談する</h3><p>用途、数、雰囲気を聞きます。</p></div>
+          <div class="step"><span class="step-number">2</span><h3>考える</h3><p>形や素材、作り方を検討します。</p></div>
+          <div class="step"><span class="step-number">3</span><h3>試作する</h3><p>必要に応じて小さく試します。</p></div>
+          <div class="step"><span class="step-number">4</span><h3>仕上げる</h3><p>使う場面に合うよう整えます。</p></div>
+          <div class="step"><span class="step-number">5</span><h3>お渡し</h3><p>完成品をお届けします。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="awa" class="section awa">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">AWA SANGA</span>
+          <h2 class="section-title">協同組合阿波山雅の<br />組合員です</h2>
+          <p class="section-desc">お山を訪れる人の思い出づくりや、地域のにぎわいづくりを、モノづくりの面から支えています。</p>
+        </div>
+        <div class="awa-box">
+          <p>
+            ねこのモノづくり小屋は、協同組合阿波山雅の組合員として、剣山・槍戸周辺の山小屋やイベント、地域活動に関わるグッズ制作を行っています。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section instagram">
+      <div class="container insta-grid">
+        <div class="insta-card">
+          <span class="section-label">INSTAGRAM</span>
+          <h2 class="section-title">日々の小屋だより</h2>
+          <p>
+            制作中の様子、新しく作ったもの、イベントでの出番などはInstagramでも紹介しています。
+          </p>
+          <div class="contact-actions" style="justify-content:flex-start">
+            <a class="button button-primary" href="https://www.instagram.com/hiro.my/" target="_blank" rel="noopener">Instagramを見る</a>
+          </div>
+        </div>
+        <div class="qr-card">
+          <!-- QR画像がある場合は下記に差し替え：<img src="assets/instagram-qr.png" alt="Instagram QRコード" /> -->
+          <div class="qr-placeholder">Instagram<br />QRコード画像を<br />ここに配置</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>制作のご相談はこちら</h2>
+          <p>
+            「こんなもの作れますか？」という段階でも大丈夫です。用途や数、使う場所を教えていただければ、できる形を一緒に考えます。
+          </p>
+          <div class="contact-actions">
+            <!-- メールアドレスは公開用に差し替えてください -->
+            <a class="button button-primary" href="mailto:sample@example.com">メールで相談する</a>
+            <a class="button button-outline" href="https://www.instagram.com/hiro.my/" target="_blank" rel="noopener">Instagramで見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© ねこのモノづくり小屋 / NEKONO MONOZUKURI-GOYA</p>
+    </div>
+  </footer>
+</body>
+</html>
